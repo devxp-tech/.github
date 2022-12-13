@@ -1,0 +1,13 @@
+{
+    "name": "DevXP-Tech GoLang CICD",
+    "description": "DevXP-Tech Organization CI Workflow.",
+    "iconName": "example-icon",
+    "categories": [
+        "Go"
+    ],
+    "filePatterns": [
+        "package.json$",
+        "^Dockerfile",
+        ".*\\.md$"
+    ]
+}
