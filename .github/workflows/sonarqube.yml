@@ -3,9 +3,9 @@ name: SonarQube Scan 🔎
 on:
   workflow_call:
     secrets:
-      SONARQUBE_HOST:
+      host:
         required: true
-      SONARQUBE_TOKEN:
+      login:
         required: true        
 jobs:
   sonarqube:
