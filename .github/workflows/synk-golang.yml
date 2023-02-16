@@ -2,7 +2,6 @@ name: Snyk Golang 🔒
 
 on:
   workflow_call:
-  workflow_call:
     secrets:
       SNYK_TOKEN:
         required: true
