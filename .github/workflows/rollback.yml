@@ -1,7 +1,7 @@
 name: GitOps Rollback 🔙
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       tag:
         description: "Set Docker Image Tag to Roll Back"
