@@ -41,5 +41,5 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -am ":robot: [GitHub Action] Set new image tag to https://github.com/devxp-tech/${{ inputs.repository }}/commit/${{ inputs.tag }}"
+        git commit -am ":robot: [GitHub Action] Set new image tag to https://github.com/${{ github.repository }}/commit/${{ inputs.tag }}"
         git push
