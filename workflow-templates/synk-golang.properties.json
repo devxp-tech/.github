@@ -1,0 +1,15 @@
+{
+    "name": "DevXP-Tech Synk GoLang",
+    "description": "DevXP-Tech Synk Golang Workflow.",
+    "iconName": "example-icon",
+    "categories": [
+        "Go",
+        "Synk",
+        "Security"
+    ],
+    "filePatterns": [
+        "package.json$",
+        "^Dockerfile",
+        ".*\\.md$"
+    ]
+}
