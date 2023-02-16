@@ -1,4 +1,4 @@
-name: rollback
+name: GitOps Rollback 🔙
 
 on:
   workflow_dispatch:
