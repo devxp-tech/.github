@@ -2,7 +2,11 @@ name: SonarQube Scan 🔎
 
 on:
   workflow_call:
-
+    secrets:
+      SONARQUBE_HOST:
+        required: true
+      SONARQUBE_TOKEN:
+        required: true        
 jobs:
   sonarqube:
     name: SonarQube Scan 🔎
