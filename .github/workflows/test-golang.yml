@@ -3,6 +3,7 @@ name: Test Golang 🔎
 on:
   workflow_call:
 
+jobs:
   test:
     name: Test Application 🔎
     runs-on: ubuntu-latest

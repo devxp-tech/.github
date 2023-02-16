@@ -3,6 +3,7 @@ name: SonarQube Scan 🔎
 on:
   workflow_call:
 
+jobs:
   sonarqube:
     name: SonarQube Scan 🔎
     runs-on: ubuntu-latest
