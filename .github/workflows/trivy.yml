@@ -6,6 +6,7 @@ on:
 jobs:
   trivy:
     runs-on: ubuntu-latest
+    name: Trivy Scan 🔒
     steps:
       - name: Run Trivy vulnerability scanner 🔎
         uses: aquasecurity/trivy-action@master
