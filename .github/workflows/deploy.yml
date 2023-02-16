@@ -1,0 +1,34 @@
+name: GitOps Deploy 🏗️
+
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    name: GitOps Deploy 🏗️
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set Kustomize 🛠️
+      uses: imranismail/setup-kustomize@v2
+      with:
+        kustomize-version: "3.9.4"
+
+    - name: GitOps Checkout 🛎️
+      run: git clone https://${REPO_TOKEN}@github.com/devxp-tech/gitops.git .
+      env:
+        REPO_TOKEN: ${{secrets.ACCESS_TOKEN_GITHUB}}
+
+    - name: Update Docker Image Tag 🏷️
+      run: |
+        cd apps/teste-loki/overlays/dev
+        OLD_TAG=$(cat kustomization.yaml | grep 'tag:' |  awk '{print $2}')
+        NEW_TAG=${{ needs.env.outputs.tag }}
+        sed -i "s|$OLD_TAG|$NEW_TAG|g" kustomization.yaml
+
+    - name: Commit and Push 🚀
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -am ":robot: [GitHub Action] Set new image tag to https://github.com/devxp-tech/teste-loki/commit/${{ needs.env.outputs.tag }}"
+        git push
