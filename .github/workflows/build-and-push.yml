@@ -6,6 +6,7 @@ on:
       tag:
         description: "Set Docker Image Tag"
         required: true  
+        type: string
 
 jobs:
   build-and-push:
