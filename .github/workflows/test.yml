@@ -5,11 +5,8 @@ on:
 
 jobs:
   test:
-    name: Test Application 🔎
+    name: Test Application 🔬
     runs-on: ubuntu-latest
-    needs:
-      - vars
-      - test
     steps:
       # need checkout before using compose-action
       - uses: actions/checkout@v3
