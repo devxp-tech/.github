@@ -2,11 +2,9 @@ name: Notify 📣
 
 on:
   workflow_call:
-    inputs:
+    secrets:
       SLACK_WEBHOOK:
-        description: "Set slack_webhook_url"
         required: true  
-        type: string
 
 jobs:
   slack-workflow-status:
