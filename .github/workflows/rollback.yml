@@ -6,6 +6,7 @@ on:
       tag:
         description: "Set Docker Image Tag to Roll Back"
         required: true
+        type: string
 
 jobs:
   rollback:
