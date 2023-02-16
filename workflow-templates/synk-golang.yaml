@@ -2,12 +2,8 @@ name: Snyk Golang
 
 on:
   workflow_call:
-    inputs:
-      config-path:
-        required: true
-        type: string
     secrets:
-      token:
+      SNYK_TOKEN:
         required: true
 
 jobs:

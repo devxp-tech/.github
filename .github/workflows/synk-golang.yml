@@ -1,8 +1,10 @@
-name: Snyk
+name: Snyk Golang 🔒
 
 on:
   workflow_call:
-
+    secrets:
+      SNYK_TOKEN:
+        required: true
 jobs:
   security:
     runs-on: ubuntu-latest
