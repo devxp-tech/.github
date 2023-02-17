@@ -4,9 +4,13 @@ on:
   workflow_call:
     inputs:
       tag:
-        description: "Set Docker Image Tag to Roll Back"
-        required: true
+        description: "Set Docker Image Tag"
+        required: true  
         type: string
+      repository:
+        description: "Set Repository Name"
+        required: true  
+        type: string        
 
 jobs:
   rollback:
