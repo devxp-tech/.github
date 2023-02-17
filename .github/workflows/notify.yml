@@ -2,9 +2,7 @@ name: Notify 📣
 
 on:
   workflow_call:
-    # secrets:
-    #   SLACK_WEBHOOK:
-    #     required: true  
+
 
 jobs:
   slack-workflow-status:

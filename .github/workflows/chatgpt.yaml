@@ -1,8 +1,7 @@
-name: chatgpt
+name: PR Explain 🤖
 
 on:
-  pull_request:
-    types: [opened, synchronize]
+  workflow_call:
 
 jobs:
   chatgpt-explain:
