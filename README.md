@@ -1,7 +1,8 @@
 # .github
+## GitHub Template Repo
 
-
-## Pipeline Workflow
+This repository store the DevXP-Tech workflow templates.
+## 🚦 Pipeline Workflow
 ```mermaid
 graph TD;
     main-->Setup-Environment;
