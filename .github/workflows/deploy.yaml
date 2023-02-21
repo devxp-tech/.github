@@ -37,7 +37,7 @@ jobs:
     - name: GitOps Checkout 🛎️
       run: git clone https://${REPO_TOKEN}@github.com/devxp-tech/gitops.git .
       env:
-        REPO_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        REPO_TOKEN: ${{secrets.ACCESS_TOKEN_GITHUB}}
 
     - name: Update Docker Image Tag 🏷️
       run: |
