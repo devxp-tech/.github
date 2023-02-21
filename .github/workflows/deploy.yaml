@@ -15,6 +15,10 @@ on:
         description: "Set Project URL"
         required: true  
         type: string
+      environment:
+        description: "Set Project Environment"
+        required: true  
+        type: string        
 
 jobs:
   deploy:
