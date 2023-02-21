@@ -43,7 +43,7 @@ jobs:
       run: |
         NEW_TAG=$(cat apps/${{ inputs.repository }}/overlays/dev/kustomization.yaml | grep 'tag:' |  awk '{print $2}')
         OLD_TAG=$(cat apps/${{ inputs.repository }}/overlays/prd/kustomization.yaml | grep 'tag:' |  awk '{print $2}')
-        sed -i "s|$OLD_TAG|$NEW_TAG|g" kustomization.yaml
+        sed -i "s|$OLD_TAG|$NEW_TAG|g" apps/${{ inputs.repository }}/overlays/prd/kustomization.yaml
 
     - name: Commit and Push 🚀
       run: |
