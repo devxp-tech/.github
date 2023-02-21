@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: '${{ inputs.environment }}'
-      url: '${{ inputs.repository }}'
+      url: '${{ inputs.url }}'
 
     steps:
     - name: Set Kustomize 🛠️
