@@ -3,6 +3,7 @@
 
 This repository store the DevXP-Tech workflow templates.
 ## 🚦 Pipeline Workflow
+
 ```mermaid
 graph TD;
     main-->Setup-Environment;
@@ -15,3 +16,8 @@ graph TD;
     Trivy-Scan-->GitOps-Deploy;
     GitOps-Deploy--notify-->Slack;
 ```
+
+## feature tests 
+## release build-and-push, deploy
+## hotfix tests , build-and-push, deploy
+## main promote
