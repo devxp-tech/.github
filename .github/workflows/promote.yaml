@@ -1,0 +1,53 @@
+name: GitOps Promote 🏗️
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: "Set Docker Image Tag"
+        required: true  
+        type: string
+      repository:
+        description: "Set Repository Name"
+        required: true  
+        type: string
+      url:
+        description: "Set Project URL"
+        required: true  
+        type: string
+      environment:
+        description: "Set Project Environment"
+        required: true  
+        type: string        
+
+jobs:
+  deploy:
+    name: GitOps Deploy 🏗️
+    runs-on: ubuntu-latest
+    environment: 
+      name: '${{ inputs.environment }}'
+      url: '${{ inputs.url }}'
+
+    steps:
+    - name: Set Kustomize 🛠️
+      uses: imranismail/setup-kustomize@v2
+      with:
+        kustomize-version: "3.9.4"
+
+    - name: GitOps Checkout 🛎️
+      run: git clone https://${REPO_TOKEN}@github.com/devxp-tech/gitops.git .
+      env:
+        REPO_TOKEN: ${{secrets.ACCESS_TOKEN_GITHUB}}
+
+    - name: Update Docker Image Tag 🏷️
+      run: |
+        NEW_TAG=$(cat apps/${{ inputs.repository }}/overlays/dev/kustomization.yaml | grep 'tag:' |  awk '{print $2}')
+        OLD_TAG=$(cat apps/${{ inputs.repository }}/overlays/prd/kustomization.yaml | grep 'tag:' |  awk '{print $2}')
+        sed -i "s|$OLD_TAG|$NEW_TAG|g" kustomization.yaml
+
+    - name: Commit and Push 🚀
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -am ":robot: [GitHub Action] Set new image tag to https://github.com/${{ github.repository }}/commit/${{ inputs.tag }}"
+        git push
