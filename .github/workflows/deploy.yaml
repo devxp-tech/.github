@@ -17,8 +17,8 @@ jobs:
     name: GitOps Deploy 🏗️
     runs-on: ubuntu-latest
     environment: 
-      name: 'production'
-      url: 'https://${{ inputs.repository }}.devxp-tech.io'
+      name: '${{ inputs.environment }}'
+      url: '${{ inputs.repository }}'
 
     steps:
     - name: Set Kustomize 🛠️
