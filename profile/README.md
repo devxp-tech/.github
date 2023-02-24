@@ -15,7 +15,7 @@
 
 - Submit a pull request: Once you have made your changes, submit a pull request explaining your changes and the benefits they bring to the project.
 
-### 🍿 Fun facts
+### 🍿 Fun facts:
 
 DevXP is an imaginary company created by friends who wanted to create an IT company where they could be free to test and learn what we want, and build the best infrastructure and perfect software engineering all in an automated way.
 
