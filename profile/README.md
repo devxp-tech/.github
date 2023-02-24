@@ -1,4 +1,4 @@
-## DevXP-Tech 🚀🪐
+## 🚀 DevXP-Tech 🪐
 ### 🙋‍♂️ Welcome to DevXP-Tech's GitHub page! We are excited to have you here and look forward to collaborating with you on our open-source projects.
 
 
