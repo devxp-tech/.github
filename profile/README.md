@@ -1,11 +1,9 @@
 ## DevXP-Tech 🚀🪐
-### 
-
-🙋‍♂️ Welcome to DevXP-Tech's GitHub page! We are excited to have you here and look forward to collaborating with you on our open-source projects.
+### 🙋‍♂️ Welcome to DevXP-Tech's GitHub page! We are excited to have you here and look forward to collaborating with you on our open-source projects.
 
 
 
-🌈 Contribution Guidelines:
+### 🌈 Contribution Guidelines:
 
 - Read the documentation: Before contributing to any project, please make sure to read the documentation thoroughly to ensure you understand the project's goals and objectives.
 
@@ -17,13 +15,17 @@
 
 - Submit a pull request: Once you have made your changes, submit a pull request explaining your changes and the benefits they bring to the project.
 
-👩‍🚀 Contributors:
+### 🍿 Fun facts
 
-- @caykemanjanelli	
-- @diegoluisi	
-- @dioculos	
-- @gritzkoo	
-- @williamlcs
+DevXP is an imaginary company created by friends who wanted to create an IT company where they could be free to test and learn what we want, and build the best infrastructure and perfect software engineering all in an automated way.
+
+### 👩‍🚀 Contributors:
+
+<a href="https://github.com/devxp-tech/gitops/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=devxp-tech/gitops" />
+</a>
+
+
 
 <!--
 
