@@ -1,6 +1,7 @@
 ## 🚀 DevXP-Tech 🪐
-### 🙋‍♂️ Welcome to DevXP-Tech's GitHub page! We are excited to have you here and look forward to collaborating with you on our open-source projects.
 
+### 🙋‍♂️ Welcome to DevXP-Tech's 
+- GitHub page! We are excited to have you here and look forward to collaborating with you on our open-source projects.
 
 
 ### 🌈 Contribution Guidelines:
@@ -17,7 +18,7 @@
 
 ### 🍿 Fun facts:
 
-DevXP is an imaginary company created by friends who wanted to create an IT company where they could be free to test and learn what we want, and build the best infrastructure and perfect software engineering all in an automated way.
+- DevXP is an imaginary company created by friends who wanted to create an IT company where they could be free to test and learn what we want, and build the best infrastructure and perfect software engineering all in an automated way.
 
 ### 👩‍🚀 Contributors:
 
