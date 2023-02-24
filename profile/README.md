@@ -17,13 +17,13 @@
 
 - Submit a pull request: Once you have made your changes, submit a pull request explaining your changes and the benefits they bring to the project.
 
-👩‍🚀 Contributors
+👩‍🚀 Contributors:
 
-@caykemanjanelli	
-@diegoluisi	
-@dioculos	
-@gritzkoo	
-@williamlcs
+- @caykemanjanelli	
+- @diegoluisi	
+- @dioculos	
+- @gritzkoo	
+- @williamlcs
 
 <!--
 
