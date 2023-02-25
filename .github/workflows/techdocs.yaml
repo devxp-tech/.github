@@ -11,6 +11,7 @@ on:
 
 jobs:
   publish-techdocs-site:
+    name: Publish TechDocs Site 📄
     runs-on: ubuntu-latest
     env:
       TECHDOCS_S3_BUCKET_NAME: ${{ secrets.TECHDOCS_S3_BUCKET_NAME }}
