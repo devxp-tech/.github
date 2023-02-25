@@ -1,4 +1,4 @@
-name: Publish TechDocs Site 📄
+name: Publish TechDocs 📄
 
 on:
   workflow_call:
