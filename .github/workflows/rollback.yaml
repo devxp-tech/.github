@@ -39,7 +39,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -am ":robot: [GitHub Action] Set new image tag to https://github.com/${{ github.repository }}/commit/${{ inputs.tag }}"
+        git commit -am "[ci skip] :robot: Set New Image Tag to https://github.com/${{ github.repository }}/commit/${{ inputs.tag }}"
         git push
 
 
