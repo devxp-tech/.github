@@ -9,8 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # need checkout before using compose-action
-      - uses: actions/checkout@v3
-      - uses: cloudposse/github-action-docker-compose-test-run@main
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Run Tests 🧪
+        uses: cloudposse/github-action-docker-compose-test-run@main
         with:
           file: ./docker-compose.yml
           service: test
