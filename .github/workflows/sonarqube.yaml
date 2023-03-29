@@ -12,11 +12,13 @@ jobs:
     name: SonarQube Scan 🔎
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout 🛎️
+      uses: actions/checkout@v3
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
-    - name: SonarQube Scan
+
+    - name: SonarQube Scan 🔎
       uses: kitabisa/sonarqube-action@v1.2.0
       with:
         host: ${{ secrets.SONARQUBE_HOST }}

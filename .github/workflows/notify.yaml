@@ -9,7 +9,7 @@ jobs:
     name: Post Status To Slack  📣
     runs-on: ubuntu-latest
     steps:
-      - name: Slack Workflow Notification
+      - name: Slack Workflow Notification 📣
         uses: Gamesight/slack-workflow-status@master
         with:
           # Required Input
