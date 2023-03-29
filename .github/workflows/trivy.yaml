@@ -2,6 +2,11 @@ name: Trivy Container Scan 🔒
 
 on:
   workflow_call:
+    inputs:
+      tag:
+        description: "Set Docker Image Tag"
+        required: true  
+        type: string
 
 jobs:
   trivy:
@@ -14,20 +19,10 @@ jobs:
       - name: Run Trivy vulnerability scanner 🔎
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ghcr.io/${{ github.repository }}:${{ needs.env.outputs.tag }}
+          image-ref: ghcr.io/${{ github.repository }}:${{ inputs.tag }}
           format: 'sarif'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
-
-      - name: Run Trivy vulnerability scanner with rootfs command
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'rootfs'
-          scan-ref: 'rootfs-example-binary'
-          ignore-unfixed: true
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          severity: 'CRITICAL'          
 
       - name: Upload Trivy scan results to GitHub Security Tab 📈
         uses: github/codeql-action/upload-sarif@main
