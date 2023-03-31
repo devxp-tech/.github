@@ -16,16 +16,6 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Set rev.txt 🛠️
-        run: git show -s --format="%ai %H %s %aN" HEAD > rev.txt
-
-      - name: Commit & Push changes
-        uses: actions-js/push@master
-        with:
-          github_token: ${{ github.token }}
-          amend: true
-          force: true
-
       - name: Set up QEMU 🛠️
         uses: docker/setup-qemu-action@v2
 
@@ -38,6 +28,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ github.token }}
+
+      - name: Set rev.txt 🛠️
+        run: git show -s --format="%ai %H %s %aN" HEAD > rev.txt
 
       - name: Build and Push Docker 🚀
         uses: docker/build-push-action@v3
