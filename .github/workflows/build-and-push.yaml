@@ -19,6 +19,11 @@ jobs:
       - name: Set rev.txt 🛠️
         run: git show -s --format="%ai %H %s %aN" HEAD > rev.txt
 
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ github.token }}
+
       - name: Set up QEMU 🛠️
         uses: docker/setup-qemu-action@v2
 
