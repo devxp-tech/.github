@@ -24,9 +24,10 @@ jobs:
         with:
           tag_name: ${{ inputs.tag }}
           release_name: Release  ${{ inputs.tag }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
+          body_path: rev.txt
+          # body: |
+          #   Changes in this Release
+          #   - First Change
+          #   - Second Change
           draft: false
           prerelease: false  
