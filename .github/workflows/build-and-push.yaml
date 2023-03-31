@@ -23,6 +23,8 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ github.token }}
+          amend: true
+          force: true
 
       - name: Set up QEMU 🛠️
         uses: docker/setup-qemu-action@v2
