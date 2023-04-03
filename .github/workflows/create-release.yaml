@@ -20,6 +20,10 @@ jobs:
         name: Get Release Notes 📝
         run: echo "notes=$(`git show -s --format="%s%n%n%b"`)" >> $GITHUB_ENV
 
+      - run: echo "${{ env.notes }}"
+
+      - run: echo "notes=$(`git show -s --format="%s%n%n%b"`)"
+
       - name: Create Release 📦
         id: create_release
         uses: actions/create-release@v1
