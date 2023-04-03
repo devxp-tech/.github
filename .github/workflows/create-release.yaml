@@ -18,9 +18,7 @@ jobs:
 
       - id: get-release-notes
         name: Get Release Notes 📝
-        run: echo "notes=$(`git show -s --format="%s%n%n%b"`)" >> $GITHUB_OUTPUT
-
-      - run: echo ${{ steps.get-release-notes.outputs.notes }}
+        run: echo "notes=$(`git show -s --format="%s%n%n%b"`)" >> $GITHUB_ENV
 
       - name: Create Release 📦
         id: create_release
@@ -32,6 +30,6 @@ jobs:
           release_name: Release  ${{ inputs.tag }}
           body: |
             Changes in this Release:
-            "${{ steps.get-release-notes.outputs.notes }}"
+            "${{ env.notes }}"
           draft: false
           prerelease: false  
