@@ -39,3 +39,6 @@ jobs:
           secrets: |
             GIT_AUTH_TOKEN=${{ github.token }}
           tags: ghcr.io/${{ github.repository }}:${{ inputs.tag }},ghcr.io/${{ github.repository }}:latest
+
+      - name: Check rev.txt 🛠️
+        run: cat rev.txt
