@@ -1,8 +1,7 @@
-name: Notify 📣
+name: Slack Notify 📣
 
 on:
   workflow_call:
-
 
 jobs:
   slack-workflow-status:
