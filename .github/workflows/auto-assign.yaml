@@ -1,4 +1,4 @@
-name: Auto Assign 📦
+name: Auto Assign 🦾
 
 on:
   workflow_call:
