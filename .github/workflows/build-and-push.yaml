@@ -27,7 +27,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ github.token }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set rev.txt 🛠️
         run: git show -s --format="%ai %H %s %aN" HEAD > rev.txt
