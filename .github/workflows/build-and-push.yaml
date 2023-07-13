@@ -37,7 +37,7 @@ jobs:
         with:
           push: true
           secrets: |
-            GIT_AUTH_TOKEN=${{ github.token }}
+            GIT_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: ghcr.io/${{ github.repository }}:${{ inputs.tag }},ghcr.io/${{ github.repository }}:latest
 
       - name: Check rev.txt 🛠️
