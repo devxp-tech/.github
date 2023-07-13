@@ -32,20 +32,20 @@ jobs:
       - name: Set rev.txt 🛠️
         run: git show -s --format="%ai %H %s %aN" HEAD > rev.txt
 
-      # - name: Build and Push Docker 🚀
-      #   uses: docker/build-push-action@v4
-      #   with:
-      #     push: true
-      #     secrets: |
-      #       GIT_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
-      #     tags: ghcr.io/${{ github.repository }}:${{ inputs.tag }},ghcr.io/${{ github.repository }}:latest
-
-      - name: Build and publish a Docker image for ${{ github.repository }}
-        uses: macbre/push-to-ghcr@master
+      - name: Build and Push Docker 🚀
+        uses: docker/build-push-action@v4
         with:
-          image_name: ${{ github.repository }}  # it will be lowercased internally
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          image_tag: ${{ inputs.tag }}
+          push: true
+          secrets: |
+            GIT_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          tags: ghcr.io/${{ github.repository }}:${{ inputs.tag }},ghcr.io/${{ github.repository }}:latest
+
+      # - name: Build and publish a Docker image for ${{ github.repository }}
+      #   uses: macbre/push-to-ghcr@master
+      #   with:
+      #     image_name: ${{ github.repository }}  # it will be lowercased internally
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     image_tag: ${{ inputs.tag }}
 
       - name: Check rev.txt 🛠️
         run: cat rev.txt
