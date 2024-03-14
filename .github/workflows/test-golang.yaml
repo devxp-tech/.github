@@ -12,7 +12,7 @@ jobs:
         go: ["1.17", "1.18"]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version:
       - run: go test -v ./...
