@@ -6,7 +6,7 @@ on:
       SONARQUBE_HOST:
         required: true
       SONARQUBE_TOKEN:
-        required: true        
+        required: true
 jobs:
   sonarqube:
     name: SonarQube Scan 🔎
@@ -18,8 +18,14 @@ jobs:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
 
-    - name: SonarQube Scan 🔎
-      uses: kitabisa/sonarqube-action@v1.2.1
-      with:
-        host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONARQUBE_TOKEN }}
+    # - name: SonarQube Scan 🔎
+    #   uses: kitabisa/sonarqube-action@v1.2.1
+    #   with:
+    #     host: ${{ secrets.SONARQUBE_HOST }}
+    #     login: ${{ secrets.SONARQUBE_TOKEN }}
+
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST }}
