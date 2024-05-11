@@ -25,8 +25,7 @@ jobs:
     #     login: ${{ secrets.SONARQUBE_TOKEN }}
 
     - name: SonarQube Scan 🔎
-      uses: achilleslinux/sonarqube-actions@master
+      uses: monstar-lab-oss/sonarqube-github-action@v1.0.1
       with:
-        host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONARQUBE_TOKEN }}
-
+        url: ${{ secrets.SONARQUBE_HOST }}
+        token: ${{ secrets.SONARQUBE_TOKEN }}
