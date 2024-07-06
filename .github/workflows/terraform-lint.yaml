@@ -1,0 +1,25 @@
+name: Terraform Validate and Lint 🔍
+
+on:
+  workflow_call:
+
+jobs:
+  terraform-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code 🛒
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform 🔧
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.0.11
+
+      - name: Initialize Terraform 🚀
+        run: terraform init
+
+      - name: Validate Terraform ✅
+        run: terraform validate
+
+      - name: Lint Terraform 🔍
+        run: terraform fmt -check
