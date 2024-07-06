@@ -1,4 +1,4 @@
-name: Terraform Validate and Lint 🔍
+name: Terraform Check 🔍
 
 on:
   workflow_call:
