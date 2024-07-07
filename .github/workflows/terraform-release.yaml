@@ -1,0 +1,140 @@
+name: Terraform Release 🚀
+
+on:
+  workflow_call:
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    outputs:
+      module-version: ${{ steps.bump-version.outputs.module-version }}
+    steps:
+      - name: 🛒 Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - name: 🔧 Git setup
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: 🏷️ Get PR labels
+        id: pr-labels
+        uses: joerick/pr-labels-action@v1.0.9
+
+      - name: 📈 Bump Version
+        id: bump-version
+        run: |
+          set -ex
+          pip install --no-cache-dir bump2version
+
+          # Determine the version part to bump based on labels
+          labels=$(echo "${{ steps.pr-labels.outputs.labels }}" | tr ',' ' ')
+          if [[ "$labels" == *"feature"* ]]; then
+            part="minor"
+          elif [[ "$labels" == *"hotfix"* ]]; then
+            part="patch"
+          elif [[ "$labels" == *"release"* ]]; then
+            part="major"
+          else
+            echo "No valid label found. Exiting."
+            exit 1
+          fi
+
+          # Run bump2version
+          bump2version $part
+
+          # Extract the new version
+          version=$(grep '^version: ' README.md | awk -F': ' '{print $2}' | tr -d '"')
+          echo "module-version=$version" >> $GITHUB_OUTPUT
+
+      - name: 📤 Push Results
+        run: |
+          if [[ $(git diff) ]]; then
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -am "[ci skip] :robot: [github actions actor] - Bumb Version"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
+  generate-docs:
+    runs-on: ubuntu-latest
+    needs: [bump-version]
+    steps:
+      - name: 🛒 Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - name: 📄 Render terraform docs inside the README.md and push changes back to PR branch
+        uses: terraform-docs/gh-actions@v1.2.0
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "true"
+
+  create-artifact:
+    runs-on: ubuntu-latest
+    needs: [generate-docs]
+    steps:
+      - name: 🛒 Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - name: 📦 Create Artifact
+        run: |
+          zip -r module.zip .
+
+      - name: 📤 Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: module
+          path: module.zip
+
+  create-release:
+    runs-on: ubuntu-latest
+    needs: [generate-docs, create-artifact]
+    steps:
+      - name: 🛒 Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - name: 🔧 Git setup
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: 🏷️ Create Git Tag
+        if: success()
+        run: |
+          version=$(awk -F': ' '/version:/ {print $2}' README.md)
+          echo $version
+          git fetch --tags
+          tag_exists=$(git tag -l "v$version")
+
+          if [ -z "$tag_exists" ]; then
+            git tag -a "v$version" -m "Release version $version"
+            git push origin "v$version"
+          else
+            echo "Tag v$version already exists. Skipping tag creation."
+          fi
+
+      - name: 🏷️ Create GitHub Release
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          version=$(awk -F': ' '/version:/ {print $2}' README.md)
+          existing_release=$(gh release list --json tagName | jq -r --arg tag "v$version" '.[] | select(.tagName == $tag)')
+
+          if [ -z "$existing_release" ]; then
+            gh release create "v$version" --title "Release v$version" --notes "Release of version v$version"
+          else
+            echo "Release for tag v$version already exists. Skipping release creation."
+          fi
