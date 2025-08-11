@@ -10,7 +10,7 @@ jobs:
     steps:
       # need checkout before using compose-action
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Run Tests 🧪
         uses: isbang/compose-action@v2.0.0
