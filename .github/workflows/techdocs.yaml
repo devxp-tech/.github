@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.14'
 
       # the 2 steps below can be removed if you aren't using plantuml in your documentation
       - name: setup java
