@@ -10,7 +10,7 @@ jobs:
       module-version: ${{ steps.bump-version.outputs.module-version }}
     steps:
       - name: 🛒 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: 'main'
 
@@ -65,7 +65,7 @@ jobs:
     needs: [bump-version]
     steps:
       - name: 🛒 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: 'main'
 
@@ -82,7 +82,7 @@ jobs:
     needs: [generate-docs]
     steps:
       - name: 🛒 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: 'main'
 
@@ -101,7 +101,7 @@ jobs:
     needs: [generate-docs, create-artifact]
     steps:
       - name: 🛒 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: 'main'
 
